@@ -6,20 +6,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Liste des Projets</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         .card-custom {
-            border: 2px solid yellow; /* Bordure jaune */
-            border-radius: 15px; /* Bordure arrondie */
-            transition: transform 0.3s ease-in-out; /* Transition pour l'animation d'agrandissement */
+            border: 2px solid yellow; 
+            border-radius: 15px;
+            transition: transform 0.3s ease-in-out; 
         }
         .card-custom:hover {
-            cursor: pointer; /* Curseur de pointeur au survol */
+            cursor: pointer; 
         }
         .card-expanded {
-            transform: scale(1.05); /* Agrandir la carte */
-            z-index: 1000; /* Assurer que la carte agrandie reste au-dessus des autres */
-            position: relative; /* Pour s'assurer que l'effet z-index s'applique correctement */
+            transform: scale(1.05); 
+            z-index: 1000; 
+            position: relative; 
         }
         .btn-modifier {
             background-color: gold;
@@ -36,9 +39,11 @@
             border-color: grey;
             color: white;
         }
+
     </style>
 </head>
 <body>
+
     <div class="container">
         <h1 class="mt-5">Liste des Projets</h1>
         <a href="ProjectServlet?action=new" class="btn btn-gerer mb-3 ">Créer un Nouveau Projet</a>
@@ -65,8 +70,6 @@
                 </div>
             </c:forEach>
         </div>
-    </div>
-
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

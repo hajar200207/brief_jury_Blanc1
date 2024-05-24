@@ -40,7 +40,8 @@
 <body>
 <div class="container">
     <h1 class="mt-5">Liste des Ressources</h1>
-    <a href="ResourceServlet?action=new&taskId=${taskId}" class="btn btn-gerer  mb-3">Créer une Nouvelle Ressource</a>
+    <a href="#" class="btn btn-gerer mb-3" data-toggle="modal" data-target="#resourceModal">Créer une Nouvelle Ressource</a>
+    
     <div class="row">
         <c:forEach var="resource" items="${resourceList}">
             <div class="col-md-4 mb-4">
@@ -61,6 +62,45 @@
                 </div>
             </div>
         </c:forEach>
+    </div>
+</div>
+<!-- Resource Modal -->
+<div class="modal fade" id="resourceModal" tabindex="-1" aria-labelledby="resourceModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="resourceModalLabel">${resource.id == null ? 'Créer une Nouvelle Ressource' : 'Modifier Ressource'}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="ResourceServlet" method="post">
+                    <input type="hidden" name="id" value="${resource.id}">
+                    <input type="hidden" name="taskId" value="${taskId}">
+                    <div class="form-group">
+                        <label for="name">Nom</label>
+                        <input type="text" class="form-control" id="name" name="name" value="${resource.name}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="type">Type</label>
+                        <input type="text" class="form-control" id="type" name="type" value="${resource.type}">
+                    </div>
+                    <div class="form-group">
+                        <label for="quantity">Quantité</label>
+                        <input type="number" class="form-control" id="quantity" name="quantity" value="${resource.quantity}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="fournisseur">Fournisseur</label>
+                        <input type="text" class="form-control" id="fournisseur" name="fournisseur" value="${resource.fournisseur}">
+                    </div>
+                    <button type="submit" class="btn btn-primary" name="action" value="${resource.id == null ? 'create' : 'update'}">
+                        ${resource.id == null ? 'Créer' : 'Mettre à Jour'}
+                    </button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                </form>
+            </div>
+        </div>
     </div>
 </div>
 
