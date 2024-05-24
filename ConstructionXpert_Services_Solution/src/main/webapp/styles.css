@@ -1,0 +1,41 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+.card-header h2 {
+    margin: 0;
+}
+
+.list-group-item {
+    margin-bottom: 10px;
+}
+
+  .sidebar {
+    background-color: #f4f4f4;
+    width: 200px;
+    padding: 20px;
+  }
+  
+  .sidebar ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .sidebar ul li {
+    margin-bottom: 10px;
+  }
+  
+  .content {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  .login-registration {
+    padding: 20px;
+  }
+  
+  .section {
+    margin-bottom: 20px;
+  }
+  

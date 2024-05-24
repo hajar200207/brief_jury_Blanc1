@@ -2,6 +2,7 @@
 package model;
 
 import java.util.Date;
+import java.util.List;
 
 public class Projet {
     private int id;
@@ -10,6 +11,7 @@ public class Projet {
     private Date startDate;
     private Date endDate;
     private double budget;
+    private List<Tache> Taches;
 
 
     public Projet() {}
@@ -40,4 +42,20 @@ public class Projet {
 
     public double getBudget() { return budget; }
     public void setBudget(double budget) { this.budget = budget; }
+
+	/**
+	 * @return the taches
+	 */
+	public List<Tache> getTaches() {
+		return Taches;
+	}
+
+	/**
+	 * @param taches the taches to set
+	 */
+	public void setTaches(List<Tache> taches) {
+		Taches = taches;
+	}
+
+	
 }

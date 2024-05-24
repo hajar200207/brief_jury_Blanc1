@@ -12,8 +12,10 @@ import java.util.List;
 
 public class ProjetDAO {
     private Connection connection;
+    private TacheDAO tacheDAO;
 
     public ProjetDAO() {
+    	 this.tacheDAO = new TacheDAO();
         this.connection = DatabaseConnection.getConnection();
         if (this.connection == null) {
             throw new RuntimeException("Failed to connect to the database");
@@ -57,6 +59,25 @@ public class ProjetDAO {
         return projets;
     }
 
+    public List<Projet> getAllProjectstache() {
+        List<Projet> projects = new ArrayList<>();
+        try {
+            String query = "SELECT * FROM projets";
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {
+                Projet project = new Projet();
+                project.setId(resultSet.getInt("id"));
+                project.setName(resultSet.getString("name"));
+                project.setDescription(resultSet.getString("description"));
+                project.setTaches(tacheDAO.getTasksByProjectId(project.getId()));
+                projects.add(project);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return projects;
+    }
     public Projet getProjectById(int id) {
         Projet projet = new Projet();
         try {

@@ -33,16 +33,16 @@ h1 {
 
 @keyframes bgChange {
   0% {
-    background-image: url(https://getwallpapers.com/wallpaper/small-retina/c/a/f/47912.jpg);
+    background-image: url(../img/hajar6.jpg);
   }
   25% {
-    background-image: url(https://getwallpapers.com/wallpaper/small-retina/c/a/f/47912.jpg);
+    background-image: url(../img/hajar6.jpg);
   }
   25.01% {
-    background-image: url(https://i.pinimg.com/474x/4c/88/39/4c88397d29445193cd6c937c5ebd49ee.jpg);
+    background-image: url(../img/hajar1.jpg);
   }
   50% {
-    background-image: url(https://i.pinimg.com/474x/4c/88/39/4c88397d29445193cd6c937c5ebd49ee.jpg);
+    background-image: url(../img/hajar1.jpg);
   }
   50.01% {
     background-image: url(https://getwallpapers.com/wallpaper/full/6/3/4/745609-construction-wallpapers-1920x1080-for-meizu.jpg);
@@ -51,10 +51,10 @@ h1 {
     background-image: url(https://getwallpapers.com/wallpaper/full/6/3/4/745609-construction-wallpapers-1920x1080-for-meizu.jpg);
   }
   75.01% {
-    background-image: url(https://getwallpapers.com/wallpaper/small-retina/d/1/c/51021.jpg); /* Remplacez par l'URL de votre nouvelle image */
+    background-image: url(../img/hajar7.jpg); 
   }
   100% {
-    background-image: url(https://getwallpapers.com/wallpaper/small-retina/d/1/c/51021.jpg); /* Remplacez par l'URL de votre nouvelle image */
+    background-image: url(../img/hajar7.jpg); 
   }
 }
 
