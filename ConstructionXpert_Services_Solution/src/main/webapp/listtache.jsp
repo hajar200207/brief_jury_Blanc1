@@ -9,10 +9,22 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     
     <style>
-      
+        .board {
+            display: flex;
+            overflow-x: auto;
+            padding: 20px 0;
+        }
+        .board-column {
+            flex: 0 0 300px;
+            margin-right: 20px;
+        }
+        .board-column:last-child {
+            margin-right: 0;
+        }
         .card-custom {
             border: 2px solid yellow; 
             border-radius: 15px; 
+            margin-bottom: 15px;
             transition: transform 0.3s ease-in-out;
         }
         .card-custom:hover {
@@ -43,31 +55,81 @@
 <body>
 <div class="container">
     <h1 class="mt-5">Liste des Tâches</h1>
-   <a href="#" class="btn btn-gerer mb-3" data-toggle="modal" data-target="#taskModal">Créer une Nouvelle Tâche</a>
+    <a href="#" class="btn btn-gerer mb-3" data-toggle="modal" data-target="#taskModal">Créer une Nouvelle Tâche</a>
    
-    <div class="row">
-        <c:forEach var="task" items="${taskList}">
-            <div class="col-md-4 mb-4">
-                <div class="card card-custom">
-                    <div class="card-body">
-                        <h5 class="card-title">${task.description}</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">ID: ${task.id}</h6>
-                        <p class="card-text">
-                            <strong>Date de Début:</strong> ${task.startDate}<br>
-                            <strong>Date de Fin:</strong> ${task.endDate}<br>
-                            <strong>Statut:</strong> ${task.status}
-                        </p>
-                        <div  class="d-flex flex-column">
-                        <a href="TaskServlet?action=edit&id=${task.id}&projectId=${projectId}" class="btn btn-modifier">Modifier</a>
-                        <a href="TaskServlet?action=delete&id=${task.id}&projectId=${projectId}" class="btn btn-supprimer">Supprimer</a>
-                        <a href="ResourceServlet?action=list&taskId=${task.id}" class="btn btn-gerer">Gérer les Ressources</a>
+    <div class="board">
+        <div class="board-column" id="a-faire" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <h2>À faire</h2>
+            <c:forEach var="task" items="${taskList}">
+                <c:if test="${task.status eq 'a faire'}">
+                    <div class="card card-custom" draggable="true" ondragstart="drag(event)" id="task_${task.id}">
+                        <div class="card-body">
+                            <h5 class="card-title">${task.description}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">ID: ${task.id}</h6>
+                            <p class="card-text">
+                                <strong>Date de Début:</strong> ${task.startDate}<br>
+                                <strong>Date de Fin:</strong> ${task.endDate}<br>
+                                <strong>Statut:</strong> ${task.status}
+                            </p>
+                            <div class="d-flex flex-column">
+                                <a href="TaskServlet?action=edit&id=${task.id}&projectId=${projectId}" class="btn btn-modifier">Modifier</a>
+                                <a href="TaskServlet?action=delete&id=${task.id}&projectId=${projectId}" class="btn btn-supprimer">Supprimer</a>
+                                <a href="ResourceServlet?action=list&taskId=${task.id}" class="btn btn-gerer">Gérer les Ressources</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </c:forEach>
+                </c:if>
+            </c:forEach>
+        </div>
+        <div class="board-column" id="en-cours" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <h2>En cours</h2>
+            <c:forEach var="task" items="${taskList}">
+                <c:if test="${task.status eq 'En cours'}">
+                    <div class="card card-custom" draggable="true" ondragstart="drag(event)" id="task_${task.id}">
+                        <div class="card-body">
+                            <h5 class="card-title">${task.description}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">ID: ${task.id}</h6>
+                            <p class="card-text">
+                                <strong>Date de Début:</strong> ${task.startDate}<br>
+                                <strong>Date de Fin:</strong> ${task.endDate}<br>
+                                <strong>Statut:</strong> ${task.status}
+                            </p>
+                            <div class="d-flex flex-column">
+                                <a href="TaskServlet?action=edit&id=${task.id}&projectId=${projectId}" class="btn btn-modifier">Modifier</a>
+                                <a href="TaskServlet?action=delete&id=${task.id}&projectId=${projectId}" class="btn btn-supprimer">Supprimer</a>
+                                <a href="ResourceServlet?action=list&taskId=${task.id}" class="btn btn-gerer">Gérer les Ressources</a>
+                            </div>
+                        </div>
+                    </div>
+                </c:if>
+            </c:forEach>
+        </div>
+        <div class="board-column" id="termine" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <h2>Terminé</h2>
+            <c:forEach var="task" items="${taskList}">
+                <c:if test="${task.status eq 'Termine'}">
+                    <div class="card card-custom" draggable="true" ondragstart="drag(event)" id="task_${task.id}">
+                        <div class="card-body">
+                            <h5 class="card-title">${task.description}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">ID: ${task.id}</h6>
+                            <p class="card-text">
+                                <strong>Date de Début:</strong> ${task.startDate}<br>
+                                <strong>Date de Fin:</strong> ${task.endDate}<br>
+                                <strong>Statut:</strong> ${task.status}
+                            </p>
+                            <div class="d-flex flex-column">
+                                <a href="TaskServlet?action=edit&id=${task.id}&projectId=${projectId}" class="btn btn-modifier">Modifier</a>
+                                <a href="TaskServlet?action=delete&id=${task.id}&projectId=${projectId}" class="btn btn-supprimer">Supprimer</a>
+                                <a href="ResourceServlet?action=list&taskId=${task.id}" class="btn btn-gerer">Gérer les Ressources</a>
+                            </div>
+                        </div>
+                    </div>
+                </c:if>
+            </c:forEach>
+        </div>
     </div>
 </div>
+
 <div class="modal fade" id="taskModal" tabindex="-1" aria-labelledby="taskModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -98,8 +160,8 @@
                     <div class="form-group">
                         <label for="status">Statut</label>
                         <select class="form-control" id="status" name="status">
-                            <option value="Terminé" ${task != null && task.status == 'Terminé' ? 'selected' : ''}>Terminé</option>
-                            <option value="À faire" ${task != null && task.status == 'À faire' ? 'selected' : ''}>À faire</option>
+                            <option value="Termine" ${task != null && task.status == 'Terminé' ? 'selected' : ''}>Terminé</option>
+                            <option value="a faire" ${task != null && task.status == 'À faire' ? 'selected' : ''}>À faire</option>
                             <option value="En cours" ${task != null && task.status == 'En cours' ? 'selected' : ''}>En cours</option>
                         </select>
                     </div>
@@ -114,15 +176,47 @@
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const cards = document.querySelectorAll('.card-custom');
-        cards.forEach(card => {
-            card.addEventListener('click', function() {
-                card.classList.toggle('card-expanded');
-            });
+function allowDrop(event) {
+    event.preventDefault();
+}
+
+function drag(event) {
+    event.dataTransfer.setData("text", event.target.id);
+}
+
+function drop(event) {
+    event.preventDefault();
+    var data = event.dataTransfer.getData("text");
+    var targetColumnId = event.target.closest('.board-column').id;
+    var taskId = data.split('_')[1];
+    
+    // Change status based on the target column
+    switch (targetColumnId) {
+        case 'a-faire':
+            document.getElementById(data).querySelector('.card-text strong:nth-child(3)').textContent = 'Statut: a faire';
+            break;
+        case 'en-cours':
+            document.getElementById(data).querySelector('.card-text strong:nth-child(3)').textContent = 'Statut: En cours';
+            break;
+        case 'termine':
+            document.getElementById(data).querySelector('.card-text strong:nth-child(3)').textContent = 'Statut: Termine';
+            break;
+        default:
+            break;
+    }
+    
+    event.target.appendChild(document.getElementById(data));
+    
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const cards = document.querySelectorAll('.card-custom');
+    cards.forEach(card => {
+        card.addEventListener('click', function() {
+            card.classList.toggle('card-expanded');
         });
     });
+});
 </script>
 </body>
 </html>
-
