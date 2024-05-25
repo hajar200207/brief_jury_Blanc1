@@ -71,8 +71,12 @@
                                 <strong>Date de Fin:</strong> ${task.endDate}<br>
                                 <strong>Statut:</strong> ${task.status}
                             </p>
-                            <div class="d-flex flex-column">
-                                <a href="TaskServlet?action=edit&id=${task.id}&projectId=${projectId}" class="btn btn-modifier">Modifier</a>
+                             <div class="d-flex flex-column">
+                                <button class="btn btn-warning btn-modifier" 
+                                        data-toggle="modal" 
+                                        data-target="#editProjectModal" 
+                                        onclick="openUpdateModal(${task.id}, '${task.description}', '${task.startDate}', '${task.endDate}', '${task.status}')">Modifier</button>
+
                                 <a href="TaskServlet?action=delete&id=${task.id}&projectId=${projectId}" class="btn btn-supprimer">Supprimer</a>
                                 <a href="ResourceServlet?action=list&taskId=${task.id}" class="btn btn-gerer">Gérer les Ressources</a>
                             </div>
@@ -95,7 +99,11 @@
                                 <strong>Statut:</strong> ${task.status}
                             </p>
                             <div class="d-flex flex-column">
-                                <a href="TaskServlet?action=edit&id=${task.id}&projectId=${projectId}" class="btn btn-modifier">Modifier</a>
+                                <button class="btn btn-warning btn-modifier" 
+                                        data-toggle="modal" 
+                                        data-target="#editProjectModal" 
+                                        onclick="openUpdateModal(${task.id}, '${task.description}', '${task.startDate}', '${task.endDate}', '${task.status}')">Modifier</button>
+
                                 <a href="TaskServlet?action=delete&id=${task.id}&projectId=${projectId}" class="btn btn-supprimer">Supprimer</a>
                                 <a href="ResourceServlet?action=list&taskId=${task.id}" class="btn btn-gerer">Gérer les Ressources</a>
                             </div>
@@ -117,8 +125,12 @@
                                 <strong>Date de Fin:</strong> ${task.endDate}<br>
                                 <strong>Statut:</strong> ${task.status}
                             </p>
-                            <div class="d-flex flex-column">
-                                <a href="TaskServlet?action=edit&id=${task.id}&projectId=${projectId}" class="btn btn-modifier">Modifier</a>
+                             <div class="d-flex flex-column">
+                                <button class="btn btn-warning btn-modifier" 
+                                        data-toggle="modal" 
+                                        data-target="#editProjectModal" 
+                                        onclick="openUpdateModal(${task.id}, '${task.description}', '${task.startDate}', '${task.endDate}', '${task.status}')">Modifier</button>
+
                                 <a href="TaskServlet?action=delete&id=${task.id}&projectId=${projectId}" class="btn btn-supprimer">Supprimer</a>
                                 <a href="ResourceServlet?action=list&taskId=${task.id}" class="btn btn-gerer">Gérer les Ressources</a>
                             </div>
@@ -171,6 +183,48 @@
         </div>
     </div>
 </div>
+<!-- Modal for editing projects -->
+<div class="modal fade" id="editProjectModal" tabindex="-1" role="dialog" aria-labelledby="editProjectModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editProjectModalLabel">Modifier la Tâche</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="updateTaskForm" method="post" action="TaskServlet">
+                    <input type="hidden" id="updateTaskId" name="id">
+                    <input type="hidden" id="updateTaskAction" name="action" value="update">
+                    <input type="hidden" id="updateTaskProjectId" name="projectId" value="${projectId}">
+                    <div class="form-group">
+                        <label for="updateTaskDescription">Description</label>
+                        <input type="text" class="form-control" id="updateTaskDescription" name="description" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="updateTaskStartDate">Date de Début</label>
+                        <input type="date" class="form-control" id="updateTaskStartDate" name="startDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="updateTaskEndDate">Date de Fin</label>
+                        <input type="date" class="form-control" id="updateTaskEndDate" name="endDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="updateTaskStatus">Statut</label>
+                        <select class="form-control" id="updateTaskStatus" name="status" required>
+                            <option value="Termine">Terminé</option>
+                            <option value="a faire">À faire</option>
+                            <option value="En cours">En cours</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Mettre à Jour</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
@@ -217,6 +271,20 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+function openUpdateModal(taskId, description, startDate, endDate, status) {
+    // Set the form action URL with the task ID
+    document.getElementById('updateTaskForm').action = "TaskServlet?action=update&id=" + taskId;
+
+    // Set the form fields with the current task data
+    document.getElementById('updateTaskId').value = taskId;
+    document.getElementById('updateTaskDescription').value = description;
+    document.getElementById('updateTaskStartDate').value = startDate;
+    document.getElementById('updateTaskEndDate').value = endDate;
+    document.getElementById('updateTaskStatus').value = status;
+
+    // Show the modal
+    $('#editProjectModal').modal('show');
+}
 </script>
 </body>
 </html>
