@@ -14,7 +14,24 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
-        
+         .modal-content {
+        background-color: gold;
+    }
+    .btn-primary {
+        background-color: black;
+        border-color: black;
+    }
+    .btn-primary:hover {
+        background-color: #333;
+        border-color: #333;
+    }
+    .close {
+        color: grey;
+        opacity: 1;
+    }
+    .close:hover {
+        color: #555;
+    }
         body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
 .w3-row-padding img {margin-bottom: 12px}
 
@@ -118,6 +135,16 @@
             border-color: grey;
             color: white;
         }
+         h2 {
+    color: gold;
+}
+h3 {
+color:grey;
+}
+h1{
+color : white;
+}
+        
 
     </style>
 </head>
@@ -381,6 +408,14 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const cards = document.querySelectorAll('.card-custom');
+        cards.forEach(card => {
+            card.addEventListener('click', function() {
+                card.classList.toggle('card-expanded');
+            });
+        });
+    });
         document.addEventListener('DOMContentLoaded', function() {
             const cards = document.querySelectorAll('.card-custom');
             cards.forEach(card => {

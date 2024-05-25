@@ -1,10 +1,4 @@
-/*
 
-Template 2097 Pop
-
-https://www.tooplate.com/view/2097-pop
-
-*/
 
 body {
   font-family: "Open Sans", Helvetica, Arial, sans-serif;
@@ -30,31 +24,30 @@ h1 {
   z-index: -1;
   animation: bgChange 9s infinite;
 }
-
 @keyframes bgChange {
   0% {
-    background-image: url(https://www.desktopbackground.org/download/960x544/2010/06/16/34018_building-projects_1284x650_h.jpg);
+    background-image: url(https://polinka.top/uploads/posts/2023-05/1683537058_polinka-top-p-stroika-kartinki-pinterest-1.jpg);
   }
   25% {
-    background-image: url(https://www.desktopbackground.org/download/960x544/2010/06/16/34018_building-projects_1284x650_h.jpg);
+    background-image: url(https://polinka.top/uploads/posts/2023-05/1683537058_polinka-top-p-stroika-kartinki-pinterest-1.jpg);
   }
   25.01% {
-    background-image: url(../img/hajar1.jpg);
+    background-image: url(../img/pop-bg.jpg);
   }
   50% {
-    background-image: url(../img/hajar1.jpg);
+    background-image: url(../img/pop-bg.jpg);
   }
   50.01% {
-    background-image: url(https://getwallpapers.com/wallpaper/full/6/3/4/745609-construction-wallpapers-1920x1080-for-meizu.jpg);
+    background-image: url(https://sun9-63.userapi.com/impf/c836437/v836437698/4a916/itrr-33EuDk.jpg?size=1000x595&quality=96&sign=27acfa7c6c8a44188d4d8d8eda6b33ce&c_uniq_tag=WSXG7uI_1H9yPELivS2xEzi3pTzk1S0SNRJC5ymokPU&type=album);
   }
   75% {
-    background-image: url(https://getwallpapers.com/wallpaper/full/6/3/4/745609-construction-wallpapers-1920x1080-for-meizu.jpg);
+    background-image: url(https://sun9-63.userapi.com/impf/c836437/v836437698/4a916/itrr-33EuDk.jpg?size=1000x595&quality=96&sign=27acfa7c6c8a44188d4d8d8eda6b33ce&c_uniq_tag=WSXG7uI_1H9yPELivS2xEzi3pTzk1S0SNRJC5ymokPU&type=album);
   }
   75.01% {
-    background-image: url(../img/hajar7.jpg); 
+    background-image: url(https://avatars.mds.yandex.net/i?id=395fb3a6ae951d4d7a5424d7546aec54c6e8aea0-9853580-images-thumbs&n=13); 
   }
   100% {
-    background-image: url(../img/hajar7.jpg); 
+    background-image: url(https://avatars.mds.yandex.net/i?id=395fb3a6ae951d4d7a5424d7546aec54c6e8aea0-9853580-images-thumbs&n=13); 
   }
 }
 
